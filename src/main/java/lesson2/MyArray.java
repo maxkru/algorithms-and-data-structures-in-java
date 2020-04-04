@@ -108,8 +108,6 @@ public class MyArray {
         sortMerge(arr.clone(), arr, 0, size - 1);
     }
 
-
-
     private void sortMerge(int[] src, int[] dest, int left, int right) {
         if (left == right) {
             return;
