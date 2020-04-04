@@ -1,0 +1,66 @@
+10 elements
+Bubble sort: 0 ms
+Select sort: 1 ms
+Insert sort: 0 ms
+Merge sort: 0 ms
+===============
+100 elements
+Bubble sort: 3 ms
+Select sort: 1 ms
+Insert sort: 0 ms
+Merge sort: 0 ms
+===============
+500 elements
+Bubble sort: 17 ms
+Select sort: 3 ms
+Insert sort: 4 ms
+Merge sort: 1 ms
+===============
+1000 elements
+Bubble sort: 6 ms
+Select sort: 4 ms
+Insert sort: 5 ms
+Merge sort: 0 ms
+===============
+5000 elements
+Bubble sort: 32 ms
+Select sort: 14 ms
+Insert sort: 3 ms
+Merge sort: 1 ms
+===============
+10000 elements
+Bubble sort: 126 ms
+Select sort: 39 ms
+Insert sort: 16 ms
+Merge sort: 1 ms
+===============
+50000 elements
+Bubble sort: 3576 ms
+Select sort: 570 ms
+Insert sort: 332 ms
+Merge sort: 5 ms
+===============
+100000 elements
+Bubble sort: 14676 ms
+Select sort: 2257 ms
+Insert sort: 1323 ms
+Merge sort: 12 ms
+===============
+200000 elements
+Bubble sort: 59249 ms
+Select sort: 9006 ms
+Insert sort: 5256 ms
+Merge sort: 26 ms
+===============
+500000 elements
+Bubble sort: 371321 ms
+Select sort: 56501 ms
+Insert sort: 33086 ms
+Merge sort: 67 ms
+===============
+1000000 elements
+Bubble sort: 1482905 ms
+Select sort: 232720 ms
+Insert sort: 134673 ms
+Merge sort: 157 ms
+===============
