@@ -4,11 +4,11 @@ import java.util.NoSuchElementException;
 
 public class Queue<T> {
 
-    private static final int DEFAULT_CAPACITY = 10;
+    protected static final int DEFAULT_CAPACITY = 10;
 
-    private T[] arr;
-    private int back, front;
-    private int size;
+    protected T[] arr;
+    protected int back, front;
+    protected int size;
 
     public Queue(int capacity) {
         arr = (T[]) new Object[capacity];
