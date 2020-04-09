@@ -1,3 +1,5 @@
+package lesson3;
+
 import lesson3.util.Deque;
 import lesson3.util.PriorityQueue;
 import lesson3.util.Queue;
@@ -102,5 +104,9 @@ public class Main {
             e.printStackTrace(System.out);
         }
         System.out.println();
+
+        String string = "abcdefg hjklmno";
+        System.out.println(string);
+        System.out.println(StringUtil.reverse(string));
     }
 }
