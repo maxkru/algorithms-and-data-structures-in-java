@@ -33,7 +33,7 @@ public class Queue<T> {
             throw new NoSuchElementException();
         T result = arr[back];
         arr[back] = null;
-        back = nextIndex(back);
+        back = nextRightIndex(back);
         size--;
         return result;
     }
@@ -44,8 +44,12 @@ public class Queue<T> {
         return arr[back];
     }
 
-    private int nextIndex(int i) {
+    protected int nextRightIndex(int i) {
         return (i + 1) % arr.length;
+    }
+
+    protected int nextLeftIndex(int i) {
+        return i == 0 ? arr.length - 1 : i - 1;
     }
 
     public int size() {

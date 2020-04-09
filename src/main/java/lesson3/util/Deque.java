@@ -40,7 +40,5 @@ public class Deque<T> extends Queue<T> {
         return arr[nextLeftIndex(front)];
     }
 
-    private int nextLeftIndex(int i) {
-        return i == 0 ? arr.length - 1 : i - 1;
-    }
+
 }
