@@ -1,4 +1,4 @@
-package lesson3;
+package lesson3.util;
 
 import lesson3.util.Stack;
 
