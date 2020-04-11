@@ -12,7 +12,7 @@ class Warrior extends Hero {
             if(health < 0) {
                 System.out.println("Герой погиб и бить не может!");
             } else {
-                hero.causeDamage(damage);
+                hero.takeDamage(damage);
             }
             System.out.println(this.name + " нанес урон " + hero.name);
         }

@@ -2,8 +2,8 @@ package game;
 
 class Doctor extends Hero {
 
-    public Doctor(int heal, String name, int damage, int addHeal) {
-        super(heal, name, damage, addHeal);
+    public Doctor(int health, String name, int damage, int addHeal) {
+        super(health, name, damage, addHeal);
     }
 
     @Override
@@ -13,6 +13,6 @@ class Doctor extends Hero {
 
     @Override
     void healing(Hero hero) {
-        hero.addHealth(addHeal);
+        hero.takeHeal(addHeal);
     }
 }

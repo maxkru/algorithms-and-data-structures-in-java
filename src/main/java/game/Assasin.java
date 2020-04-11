@@ -7,8 +7,8 @@ class Assasin extends Hero {
     int cricitalHit;
     Random random = new Random();
 
-    public Assasin(int heal, String name, int damage, int addHeal) {
-        super(heal, name, damage, addHeal);
+    public Assasin(int health, String name, int damage, int addHeal) {
+        super(health, name, damage, addHeal);
         this.cricitalHit = random.nextInt(20);
     }
 
@@ -18,7 +18,7 @@ class Assasin extends Hero {
             if(health < 0) {
                 System.out.println("Герой погиб и бить не может!");
             } else {
-                hero.causeDamage(damage + cricitalHit);
+                hero.takeDamage(damage + cricitalHit);
             }
             System.out.println(this.name + " нанес урон " + hero.name);
         }

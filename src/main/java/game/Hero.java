@@ -18,7 +18,7 @@ abstract class Hero {
 
     abstract void healing(Hero hero);
 
-    void causeDamage(int damage) {
+    void takeDamage(int damage) {
         if(health < 0) {
             System.out.println("Герой уже мертвый!");
         } else {
@@ -31,7 +31,7 @@ abstract class Hero {
         return health;
     }
 
-    void addHealth(int health) {
+    void takeHeal(int health) {
         this.health += health;
     }
 
