@@ -3,6 +3,8 @@ package lesson4;
 import lesson4.util.LinkedList;
 import lesson4.util.SinglyLinkedList;
 
+import java.util.Iterator;
+
 public class Main {
     public static void main(String[] args) {
         SinglyLinkedList<Integer> list = new SinglyLinkedList<>();
@@ -28,5 +30,11 @@ public class Main {
         System.out.println(list2);
         System.out.println(list2.contains(3));
         System.out.println(list2.contains(5));
+
+        Iterator<Integer> it = list2.iterator();
+        it.next();
+        it.remove();
+        it.forEachRemaining(x -> System.out.print(x + " "));
+        System.out.println(list2);
     }
 }
