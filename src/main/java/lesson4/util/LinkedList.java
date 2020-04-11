@@ -1,8 +1,46 @@
 package lesson4.util;
 
+import java.util.Iterator;
 import java.util.NoSuchElementException;
 
 public class LinkedList<T> { // doubly-linked list
+
+    private class LLIterator implements Iterator<T> {
+
+        private Node node;
+        private boolean removePermitted;
+
+        LLIterator() {
+            node = new Node(null);
+            node.next = first;
+            removePermitted = false;
+        }
+
+        @Override
+        public boolean hasNext() {
+            return node.next != null;
+        }
+
+        @Override
+        public T next() {
+            if (!hasNext())
+                throw new NoSuchElementException();
+            T item = node.next.item;
+            node = node.next;
+            removePermitted = true;
+            return item;
+        }
+
+        @Override
+        public void remove() {
+            if (node == null || !removePermitted) {
+                throw new IllegalStateException();
+            }
+            removeNode(node);
+            removePermitted = false;
+            size--;
+        }
+    }
 
     private class Node {
         private Node prev;
@@ -121,8 +159,7 @@ public class LinkedList<T> { // doubly-linked list
         Node node = first;
         while(node != null) {
             if (item.equals(node.item)) {
-                node.next.prev = node.prev;
-                node.prev.next = node.next;
+                removeNode(node);
                 size--;
                 return true;
             }
@@ -154,5 +191,22 @@ public class LinkedList<T> { // doubly-linked list
         sb.append("]");
 
         return sb.toString();
+    }
+
+    public Iterator<T> iterator() {
+        return new LLIterator();
+    }
+
+    private void removeNode(Node node) {
+        if (node.next != null) {
+            node.next.prev = node.prev;
+        } else { // we are deleting last
+            last = node.prev;
+        }
+        if (node.prev != null) {
+            node.prev.next = node.next;
+        } else { // we are deleting first
+            first = node.next;
+        }
     }
 }
