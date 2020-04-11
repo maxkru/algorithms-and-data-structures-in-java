@@ -38,7 +38,6 @@ public class LinkedList<T> { // doubly-linked list
             }
             removeNode(node);
             removePermitted = false;
-            size--;
         }
     }
 
@@ -108,11 +107,7 @@ public class LinkedList<T> { // doubly-linked list
             throw new NoSuchElementException();
 
         T item = first.item;
-        first = first.next;
-        if (first == null)
-            last = null;
-        else
-            first.prev = null;
+        removeNode(first);
         return item;
     }
 
@@ -121,11 +116,7 @@ public class LinkedList<T> { // doubly-linked list
             throw new NoSuchElementException();
 
         T item = last.item;
-        last = last.prev;
-        if (last == null)
-            first = null;
-        else
-            last.next = null;
+        removeNode(last);
         return item;
     }
 
@@ -160,7 +151,6 @@ public class LinkedList<T> { // doubly-linked list
         while(node != null) {
             if (item.equals(node.item)) {
                 removeNode(node);
-                size--;
                 return true;
             }
             node = node.next;
@@ -208,5 +198,6 @@ public class LinkedList<T> { // doubly-linked list
         } else { // we are deleting first
             first = node.next;
         }
+        size--;
     }
 }
