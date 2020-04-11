@@ -4,28 +4,22 @@ import java.util.Random;
 
 class Assassin extends Hero {
 
-    int criticalHit;
+    private static final float CRIT_FACTOR = 2f;
+    private float criticalHitChance;
     Random random = new Random();
 
-    public Assassin(int health, String name, int damage, int addHeal) {
+    public Assassin(int health, String name, int damage, int addHeal, float criticalHitChance) {
         super(health, name, damage, addHeal);
-        this.criticalHit = random.nextInt(20);
-    }
-
-    @Override
-    void hit(Hero target) {
-        if (target != this) {
-            if(maxHealth < 0) {
-                System.out.println("Герой погиб и бить не может!");
-            } else {
-                target.takeDamage(damage + criticalHit);
-            }
-            System.out.println(this.name + " нанес урон " + target.name);
-        }
+        this.criticalHitChance = criticalHitChance;
     }
 
     @Override
     void healing(Hero target) {
         System.out.println("Убийцы не умеют лечить!");
+    }
+
+    @Override
+    protected int calculateDamageForHit() {
+        return (random.nextFloat() < criticalHitChance) ? (int) (this.damage * CRIT_FACTOR) : this.damage;
     }
 }

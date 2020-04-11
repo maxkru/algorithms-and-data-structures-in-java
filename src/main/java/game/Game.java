@@ -7,24 +7,26 @@ class Game {
 
         Random randomStep = new Random();
         Random randomHealing = new Random();
-        int round = 3;
+        int round = 7;
 
         Hero[] team1 = new Hero[] {
                 new Warrior(250, "Тигрил", 50, 0),
-                new Assassin(150, "Акали", 70, 0),
+                new Assassin(150, "Акали", 70, 0, 0.2f),
                 new Doctor(120, "Жанна", 0, 60)
         };
 
 
         Hero[] team2 = new Hero[] {
                 new Warrior(290, "Минотавр", 60, 0),
-                new Assassin(160, "Джинкс", 90, 0),
+                new Assassin(160, "Джинкс", 90, 0, 0.1f),
                 new Doctor(110, "Зои", 0, 80)
         };
 
 
 
         for (int j = 0; j < round; j++) {
+            System.out.println("---------------");
+            System.out.println("Раунд " + (j + 1));
             for (int i = 0; i < team1.length; i++) {
                 if(randomStep.nextInt(2) == 0) {
                     if(team1[i] instanceof Doctor) {

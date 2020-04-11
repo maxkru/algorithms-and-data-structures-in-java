@@ -14,5 +14,7 @@ class Doctor extends Hero {
     @Override
     void healing(Hero target) {
         target.takeHeal(addHeal);
+        System.out.printf("%s восстанавливает %d здоровья герою %s\n", this.name, this.addHeal, target.name);
+        target.info();
     }
 }
