@@ -19,26 +19,26 @@ abstract class Hero {
     }
 
     void hit(Hero target) {
+        if (!this.isAlive()) {
+            System.out.println(name + ": мертвый герой бить не может!");
+            return;
+        }
         if (target == this) {
             System.out.println(name + " попробовал ударить себя. Не получилось.");
             return;
         }
-
-        if (this.isAlive()) {
-            if (target.isAlive()) {
-                int damage = calculateDamageForHit();
-                target.takeDamage(damage);
-                System.out.printf("%s наносит %d урона герою %s\n", this.name, damage, target.name);
-                target.info();
-            } else {
-                System.out.printf("%s попытался ударить мёртвого героя %s\n", this.name, target.name);
-            }
-        } else {
-            System.out.println(name + ": мертвый герой бить не может!");
+        if (!target.isAlive()) {
+            System.out.printf("%s попытался ударить мёртвого героя %s\n", this.name, target.name);
+            return;
         }
+
+        int damage = calculateDamageForHit();
+        target.takeDamage(damage);
+        System.out.printf("%s наносит %d урона герою %s%s\n", this.name, damage, target.name, target.isAlive() ? "" : " и убивает его!");
+        target.infoShort();
     }
 
-    abstract void healing(Hero target);
+    abstract void heal(Hero target);
 
     void takeDamage(int damage) {
         if(!alive) {
@@ -60,16 +60,23 @@ abstract class Hero {
     void takeHeal(int health) {
         if (alive) {
             currentHealth += health;
-            if (currentHealth > health)
+            if (currentHealth > maxHealth)
                 currentHealth = maxHealth;
         }
     }
 
-    void info() {
+    void infoShort() {
         if (alive)
-            System.out.printf("%s: %d/%d hp, %d урона\n", name, currentHealth, maxHealth, damage);
+            System.out.printf("%s: %d/%d hp\n", name, currentHealth, maxHealth);
         else
             System.out.printf("%s: герой мертв\n", name);
+    }
+
+    void infoFull() {
+        if (alive)
+            System.out.printf("%s: %d/%d hp, урон %d\n", name, currentHealth, maxHealth, damage);
+        else
+            System.out.printf("%s: герой мертв, урон %d\n", name, damage);
     }
 
     private void checkAlive() {

@@ -6,7 +6,7 @@ class Assassin extends Hero {
 
     private static final float CRIT_FACTOR = 2f;
     private float criticalHitChance;
-    Random random = new Random();
+    private Random random = new Random();
 
     public Assassin(int health, String name, int damage, int addHeal, float criticalHitChance) {
         super(health, name, damage, addHeal);
@@ -14,12 +14,20 @@ class Assassin extends Hero {
     }
 
     @Override
-    void healing(Hero target) {
+    void heal(Hero target) {
         System.out.println("Убийцы не умеют лечить!");
     }
 
     @Override
     protected int calculateDamageForHit() {
         return (random.nextFloat() < criticalHitChance) ? (int) (this.damage * CRIT_FACTOR) : this.damage;
+    }
+
+    @Override
+    void infoFull() {
+        if (alive)
+            System.out.printf("%s: убийца, %d/%d hp, урон %d, шанс на крит %.0f%%\n", name, currentHealth, maxHealth, damage, criticalHitChance * 100f);
+        else
+            System.out.printf("%s: убийца, герой мертв, урон %d, шанс на крит %.0f%%\n", name, damage, criticalHitChance * 100f);
     }
 }
