@@ -14,7 +14,7 @@ class Warrior extends Hero {
     @Override
     void infoFull() {
         if (alive)
-            System.out.printf("%s: воин, %d/%d hp, урон %d\n", name, currentHealth, maxHealth, damage);
+            System.out.printf("%s: воин, %d/%d hp, урон %d-%d\n", name, currentHealth, maxHealth, damage);
         else
             System.out.printf("%s: воин, герой мертв, урон %d\n", name, damage);
     }

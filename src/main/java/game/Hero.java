@@ -1,5 +1,7 @@
 package game;
 
+import game.util.RNG;
+
 abstract class Hero {
 
     protected int maxHealth;
@@ -90,6 +92,6 @@ abstract class Hero {
     }
 
     protected int calculateDamageForHit() {
-        return damage;
+        return RNG.getInstance().roll(damage * 3 / 4, damage * 5 / 4);
     }
 }

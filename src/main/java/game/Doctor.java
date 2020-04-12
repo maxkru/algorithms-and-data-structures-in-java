@@ -1,5 +1,7 @@
 package game;
 
+import game.util.RNG;
+
 class Doctor extends Hero {
 
     public Doctor(int health, String name, int damage, int addHeal) {
@@ -14,7 +16,7 @@ class Doctor extends Hero {
         }
 
         int initHealth = target.currentHealth;
-        target.takeHeal(addHeal);
+        target.takeHeal(RNG.getInstance().roll(addHeal * 3 / 4, addHeal * 5 / 4));
         int healthDiff = target.currentHealth - initHealth;
         if (healthDiff > 0)
             System.out.printf("%s восстанавливает %d здоровья герою %s\n", this.name, healthDiff, target.name);

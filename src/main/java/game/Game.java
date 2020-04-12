@@ -1,14 +1,14 @@
 package game;
 
+import game.util.RNG;
+
 import java.util.*;
 
 class Game {
 
     private static final int NUMBER_OF_ROUNDS = 30;
 
-    private static Random random = new Random();
-
-
+    private static RNG rng = RNG.getInstance();
 
     public static void main(String[] args) {
 
@@ -34,7 +34,7 @@ class Game {
             System.out.println("---------------");
             System.out.println("Раунд " + (j + 1));
             for (int i = 0; i < aliveTeam1.size() || i < aliveTeam2.size() ; i++) {
-                if(random.nextInt(2) == 0) {
+                if(rng.roll(0, 2) == 0) {
                     if (aliveTeam1.size() > i)
                         act(aliveTeam1.get(i), aliveTeam1, aliveTeam2);
                     if (aliveTeam2.size() > i)
@@ -75,9 +75,9 @@ class Game {
 
     private static void act(Hero actor, List<Hero> allies, List<Hero> enemies) {
         if (actor instanceof Doctor && !teamIsOnlyDoctors(allies)) {
-            actor.heal(allies.get(random.nextInt(allies.size())));
+            actor.heal(allies.get(rng.roll(0, allies.size() - 1)));
         } else {
-            actor.hit(enemies.get(random.nextInt(enemies.size())));
+            actor.hit(enemies.get(rng.roll(0, enemies.size() - 1)));
         }
     }
 

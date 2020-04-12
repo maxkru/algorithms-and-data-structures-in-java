@@ -20,7 +20,8 @@ class Assassin extends Hero {
 
     @Override
     protected int calculateDamageForHit() {
-        return (random.nextFloat() < criticalHitChance) ? (int) (this.damage * CRIT_FACTOR) : this.damage;
+        int damage = super.calculateDamageForHit();
+        return (random.nextFloat() < criticalHitChance) ? (int) (damage * CRIT_FACTOR) : damage;
     }
 
     @Override
