@@ -1,19 +1,17 @@
 package lesson6;
 
 import lesson6.util.BinaryTree;
+import lesson6.util.IntegerBinaryTreeGenerator;
 
 public class Main {
 
+    private static final int NUMBER_OF_TREES = 20;
+
     public static void main(String[] args) {
-        BinaryTree<Integer> tree = new BinaryTree<>();
+        for (int i = 0; i < NUMBER_OF_TREES; i++) {
+            BinaryTree<Integer> tree = IntegerBinaryTreeGenerator.randomTreeByLevelCount(6, -100, 100);
+        }
 
-        tree.add(1);
-        tree.add(-10);
-        tree.add(10);
-        tree.add(2);
-
-        System.out.println(tree.remove(2));
-        System.out.println(tree.contains(2));
     }
 
 }

@@ -137,4 +137,14 @@ public class BinaryTree<E extends Comparable<E>> {
         return node;
     }
 
+    public int numberOfLevels() {
+        return numberOfLevels(root);
+    }
+
+    private int numberOfLevels(Node node) {
+        if (node == null)
+            return 0;
+        return Math.max(numberOfLevels(node.left), numberOfLevels(node.right)) + 1;
+    }
+
 }
