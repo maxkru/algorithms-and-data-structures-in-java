@@ -147,4 +147,16 @@ public class BinaryTree<E extends Comparable<E>> {
         return Math.max(numberOfLevels(node.left), numberOfLevels(node.right)) + 1;
     }
 
+    public int rootLeftBranchSize() {
+        if (isEmpty())
+            throw new IllegalStateException();
+        return size(root.left);
+    }
+
+    public int rootRightBranchSize() {
+        if (isEmpty())
+            throw new IllegalStateException();
+        return size(root.right);
+    }
+
 }
