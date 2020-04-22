@@ -6,5 +6,5 @@ public interface Graph {
 
     void addLink(String vertex1Name, String vertex2Name, Integer value);
 
-    void resetVisited();
+    Integer getShortestPathValue(String sourceName, String destName);
 }
